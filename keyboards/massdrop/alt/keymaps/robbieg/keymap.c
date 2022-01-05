@@ -38,6 +38,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 };
 
+// Shift mouse keys to scroll - note up/down reversal because natural scrolling
+const key_override_t scroll_up_override = ko_make_basic(MOD_MASK_SHIFT, KC_MS_U, KC_WH_D);
+const key_override_t scroll_down_override = ko_make_basic(MOD_MASK_SHIFT, KC_MS_D, KC_WH_U);
+const key_override_t scroll_left_override = ko_make_basic(MOD_MASK_SHIFT, KC_MS_L, KC_WH_L);
+const key_override_t scroll_right_override = ko_make_basic(MOD_MASK_SHIFT, KC_MS_R, KC_WH_R);
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &scroll_up_override,
+    &scroll_down_override,
+    &scroll_left_override,
+    &scroll_right_override,
+    NULL
+};
+
+
 #define MODS_SHIFT  (get_mods() & MOD_BIT(KC_LSHIFT) || get_mods() & MOD_BIT(KC_RSHIFT))
 #define MODS_CTRL  (get_mods() & MOD_BIT(KC_LCTL) || get_mods() & MOD_BIT(KC_RCTRL))
 #define MODS_ALT  (get_mods() & MOD_BIT(KC_LALT) || get_mods() & MOD_BIT(KC_RALT))
